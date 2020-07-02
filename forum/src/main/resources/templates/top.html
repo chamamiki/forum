@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>TOP</title>
+</head>
+<body>
+	<form action="/new">
+		<input type="submit" value="新規投稿">
+	</form>
+
+	<table border="1">
+		<tr>
+			<th>ID</th>
+			<th>内容</th>
+		</tr>
+
+		<tr th:each="content : ${contents}">
+			<td th:text="${content.id}">
+			<td th:text="${content.content}">
+		</tr>
+	</table>
+
+</body>
+</html>
