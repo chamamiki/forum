@@ -31,4 +31,12 @@ public class ReportService {
 	public void saveReport(Report report) {
 		reportRepository.save(report);
 	}
+
+	/**
+	 * レコード追加
+	 *
+	 */
+	public void deleteReport(Integer id) {
+		reportRepository.deleteById(id);
+	}
 }
