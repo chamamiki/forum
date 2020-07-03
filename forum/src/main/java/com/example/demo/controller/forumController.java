@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -44,4 +45,10 @@ public class forumController {
 		return new ModelAndView("redirect:/"); // rootへリダイレクト
 	}
 
+	// 削除処理
+	@PostMapping("/delete/{id}")
+	public ModelAndView deleteContent(@PathVariable Integer id) {
+		reportService.deleteReport(id);
+		return new ModelAndView("redirect:/");
+	}
 }
