@@ -48,7 +48,7 @@ public class forumController {
 	// 削除処理
 	@PostMapping("/delete/{id}")
 	public ModelAndView deleteContent(@PathVariable Integer id) {
-		reportService.deleteReport(id);
-		return new ModelAndView("redirect:/");
+		reportService.deleteReport(id); // UrlParameterのidを基に投稿を削除
+		return new ModelAndView("redirect:/"); // rootへリダイレクト
 	}
 }
