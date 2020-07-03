@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,7 +15,6 @@ import com.example.demo.service.ReportService;
 
 @Controller
 public class forumController {
-	// テスト
 	@Autowired
 	ReportService reportService;
 
@@ -22,9 +22,9 @@ public class forumController {
 	@GetMapping
 	public ModelAndView top() {
 		ModelAndView mav = new ModelAndView();
-		List<Report> contentData = reportService.findAllReport();
-		mav.setViewName("/top");
-		mav.addObject("contents", contentData);
+		List<Report> contentData = reportService.findAllReport(); // 投稿を全件取得
+		mav.setViewName("/top"); // 画面遷移先を指定
+		mav.addObject("contents", contentData); // 投稿データオブジェクトを保管
 		return mav;
 	}
 
@@ -32,17 +32,23 @@ public class forumController {
 	@GetMapping("/new")
 	public ModelAndView newContent() {
 		ModelAndView mav = new ModelAndView();
-		Report report = new Report();
-		mav.addObject("formModel", report);
-		mav.setViewName("/new");
+		Report report = new Report(); // form用の空のentityを準備
+		mav.setViewName("/new"); // 画面遷移先を指定
+		mav.addObject("formModel", report); // 準備した空のentityを保管
 		return mav;
 	}
 
 	// 投稿処理
 	@PostMapping("/add")
 	public ModelAndView addContent(@ModelAttribute("formModel") Report report) {
-		reportService.saveReport(report);
-		return new ModelAndView("redirect:/");
+		reportService.saveReport(report); // 投稿をテーブルに格納
+		return new ModelAndView("redirect:/"); // rootへリダイレクト
 	}
 
+	// 削除処理
+	@PostMapping("/delete/{id}")
+	public ModelAndView deleteContent(@PathVariable Integer id) {
+		reportService.deleteReport(id);
+		return new ModelAndView("redirect:/");
+	}
 }
