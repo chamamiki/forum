@@ -33,7 +33,7 @@ public class ReportService {
 	}
 
 	/**
-	 * レコード追加
+	 * レコード削除
 	 *
 	 */
 	public void deleteReport(Integer id) {
