@@ -14,7 +14,7 @@ import com.example.demo.service.ReportService;
 
 @Controller
 public class forumController {
-
+	// テスト
 	@Autowired
 	ReportService reportService;
 
