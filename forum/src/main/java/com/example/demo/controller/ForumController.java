@@ -14,7 +14,7 @@ import com.example.demo.entity.Report;
 import com.example.demo.service.ReportService;
 
 @Controller
-public class forumController {
+public class ForumController {
 	@Autowired
 	ReportService reportService;
 
