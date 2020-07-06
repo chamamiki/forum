@@ -51,4 +51,23 @@ public class ForumController {
 		reportService.deleteReport(id); // UrlParameterのidを基に投稿を削除
 		return new ModelAndView("redirect:/"); // rootへリダイレクト
 	}
+
+	// 編集画面
+	@GetMapping("/edit/{id}")
+	public ModelAndView editContent(@PathVariable Integer id) {
+		ModelAndView mav = new ModelAndView();
+		Report report = reportService.editReport(id); // 編集する投稿を取得
+		mav.addObject("editContent", report); // TODO idをセットする為に使っているので修正した方がいい
+		mav.addObject("formModel", report); // 編集する投稿をセット
+		mav.setViewName("/edit"); // 画面遷移先を指定
+		return mav;
+	}
+
+	// 編集処理
+	@PostMapping("/update/{id}")
+	public ModelAndView updateContent(@PathVariable Integer id, @ModelAttribute("formModel") Report report) {
+		report.setId(id); // UrlParameterのidを更新するentityにセット
+		reportService.saveReport(report); // 編集した投稿を更新
+		return new ModelAndView("redirect:/"); // rootへリダイレクト
+	}
 }

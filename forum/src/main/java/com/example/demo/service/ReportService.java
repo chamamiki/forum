@@ -39,4 +39,13 @@ public class ReportService {
 	public void deleteReport(Integer id) {
 		reportRepository.deleteById(id);
 	}
+
+	/**
+	 * レコード1件取得
+	 *
+	 */
+	public Report editReport(Integer id) {
+		Report report = (Report) reportRepository.findById(id).orElse(null);
+		return report;
+	}
 }

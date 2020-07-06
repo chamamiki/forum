@@ -14,11 +14,17 @@
 			<th>ID</th>
 			<th>内容</th>
 			<th></th>
+			<th></th>
 		</tr>
 
 		<tr th:each="content : ${contents}">
 			<td th:text="${content.id}">
 			<td th:text="${content.content}">
+			<td>
+				<form th:action="@{/edit/{id}(id=${content.id})}">
+					<input type="submit" value="編集">
+				</form>
+			</td>
 			<td>
 				<form th:action="@{/delete/{id}(id=${content.id})}" th:method="delete">
 					<input type="submit" value="削除">
