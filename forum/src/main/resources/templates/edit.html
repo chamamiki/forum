@@ -12,9 +12,8 @@
 		</tr>
 
 		<tr th:object="${editContent}">
-			<form method="post" th:action="@{/update/{id}(id=${editContent.id})}" th:object="${formModel}">
-				<td><input type="text" name="content"
-					th:value="${formModel.content}" size="20" maxlength="200" /></td>
+			<form th:action="@{/update/{id}(id=${editContent.id})}" th:object="${formModel}" th:method="put">
+				<td><input type="text" name="content" th:value="${formModel.content}" size="20" maxlength="200" /></td>
 				<td><input type="submit" value="更新"></td>
 			</form>
 		</tr>

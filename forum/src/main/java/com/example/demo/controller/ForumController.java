@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.entity.Report;
@@ -46,7 +48,7 @@ public class ForumController {
 	}
 
 	// 削除処理
-	@PostMapping("/delete/{id}")
+	@DeleteMapping("/delete/{id}")
 	public ModelAndView deleteContent(@PathVariable Integer id) {
 		reportService.deleteReport(id); // UrlParameterのidを基に投稿を削除
 		return new ModelAndView("redirect:/"); // rootへリダイレクト
@@ -64,7 +66,7 @@ public class ForumController {
 	}
 
 	// 編集処理
-	@PostMapping("/update/{id}")
+	@PutMapping("/update/{id}")
 	public ModelAndView updateContent(@PathVariable Integer id, @ModelAttribute("formModel") Report report) {
 		report.setId(id); // UrlParameterのidを更新するentityにセット
 		reportService.saveReport(report); // 編集した投稿を更新
