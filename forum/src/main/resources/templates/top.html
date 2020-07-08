@@ -3,16 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <title>TOP</title>
+<link th:href="@{/css/table.css}" rel="stylesheet">
 </head>
 <body>
+    <h1>minimum掲示板</h1>
+    <h5>※この掲示板はつぶやくことのみを目的とした匿名の掲示板です。</h5>
+    <h3>新規投稿はこちらから↓</h3>
 	<form action="/new">
-		<input type="submit" value="新規投稿">
+		<input type="submit" value="新規投稿" style="position: absolute; left: 10%"/>
 	</form>
 
 	<table border="1">
 		<tr>
 			<th>ID</th>
-			<th>内容</th>
+			<th width ="91%">内容</th>
 			<th></th>
 			<th></th>
 		</tr>

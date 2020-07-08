@@ -3,19 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <title>新規投稿画面</title>
+<link th:href="@{/css/table.css}" rel="stylesheet">
 </head>
 <body>
+<h1>minimumTwitter</h1>
+    <h3>新規投稿入力フォーム</h3>
 	<form method="post" action="/add" th:object="${formModel}">
 		<table border="1">
 			<tr>
 				<th>投稿内容</th>
-				<td><input type="text" name="content"th:value="*{content}" size="20" maxlength="200" /></td>
+				<th></th>
+			</tr>
+			<tr>
+				<td><input type="text" name="content"th:value="*{content}" size="150" maxlength="70" /></td>
+				<td><input type="submit" value="投稿" /></td>
 			</tr>
 		</table>
-		<input type="submit" value="投稿" />
 	</form>
 	<form action="/">
-		<input type="submit" value="戻る" />
+		<input type="submit" value="戻る" style="position: absolute; right: 5%; top: 35%"/>
 	</form>
 </body>
 </html>

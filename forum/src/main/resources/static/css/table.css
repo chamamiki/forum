@@ -1,0 +1,10 @@
+@charset "UTF-8";
+  body {
+    background-color: lightblue;
+  }
+  table {
+   background-color: white;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 5%;
+  }

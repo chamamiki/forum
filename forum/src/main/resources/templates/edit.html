@@ -3,24 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <title>編集処理</title>
+<link th:href="@{/css/table.css}" rel="stylesheet">
 </head>
 <body>
+<h1>minimumTwitter</h1>
+    <h3>投稿内容編集フォーム</h3>
 	<table border="1">
 		<tr>
-			<th>内容</th>
+			<th>編集内容</th>
 			<th></th>
 		</tr>
 
 		<tr th:object="${editContent}">
-			<form th:action="@{/update/{id}(id=${editContent.id})}" th:object="${formModel}" th:method="put">
-				<td><input type="text" name="content" th:value="${formModel.content}" size="20" maxlength="200" /></td>
+			<form method="post" th:action="@{/update/{id}(id=${editContent.id})}" th:object="${formModel}">
+				<td><input type="text" name="content"
+					th:value="${formModel.content}" size="150" maxlength="70" /></td>
 				<td><input type="submit" value="更新"></td>
 			</form>
 		</tr>
 
 	</table>
 	<form action="/">
-		<input type="submit" value="戻る" />
+		<input type="submit" value="戻る" style="position: absolute; right: 5%; top: 35%"/>
 	</form>
 </body>
 </html>
